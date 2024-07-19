@@ -14,7 +14,12 @@ import { ConfigModule } from '@nestjs/config';
       envFilePath: '.env',
     }),
 
-    MongooseModule.forRoot(process.env.DATABASE_URL),
+    MongooseModule.forRoot(process.env.DATABASE_URL, {
+      retryWrites: true,
+      appName: process.env.APP_NAME,
+      w: 'majority',
+      dbName: process.env.DATABASE_NAME,
+    }),
   ],
 })
 export class AppModule {}
