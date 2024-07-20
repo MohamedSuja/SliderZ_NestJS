@@ -2,6 +2,7 @@ import {
   ConflictException,
   Injectable,
   InternalServerErrorException,
+  NotFoundException,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -32,6 +33,10 @@ export class UsersService {
   }
 
   async findOne(email: string): Promise<User> {
-    return this.userModel.findOne({ email: email }).exec();
+    const user = await this.userModel.findOne({ email }).exec();
+    if (!user) {
+      throw new NotFoundException('Please provide a valid email');
+    }
+    return user;
   }
 }
