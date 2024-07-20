@@ -3,7 +3,19 @@ import { HydratedDocument } from 'mongoose';
 
 export type UserDocument = HydratedDocument<User>;
 
-@Schema()
+@Schema({
+  versionKey: false,
+  toJSON: {
+    transform: (doc, ret) => {
+      delete ret._id;
+    },
+  },
+  toObject: {
+    transform: (doc, ret) => {
+      delete ret._id;
+    },
+  },
+})
 export class User {
   @Prop()
   email: string;
