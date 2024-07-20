@@ -8,11 +8,13 @@ export type UserDocument = HydratedDocument<User>;
   toJSON: {
     transform: (doc, ret) => {
       delete ret._id;
+      delete ret.password;
     },
   },
   toObject: {
     transform: (doc, ret) => {
       delete ret._id;
+      delete ret.password;
     },
   },
 })
@@ -21,13 +23,13 @@ export class User {
   email: string;
 
   @Prop()
-  password: string;
-
-  @Prop()
   firstName: string;
 
   @Prop()
   lastName: string;
+
+  @Prop()
+  password: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
