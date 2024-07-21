@@ -4,6 +4,7 @@ import { HydratedDocument } from 'mongoose';
 export type UserDocument = HydratedDocument<User>;
 
 @Schema({
+  collection: 'users',
   versionKey: false,
   toJSON: {
     transform: (doc, ret) => {
