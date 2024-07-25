@@ -51,6 +51,8 @@ $ nest g <schematic> <name> [options]
 | ------------- | -------------------------------------------------------------------------------------------------------- |
 | `<schematic>` | The `schematic` or `collection:schematic` to generate. See the table below for the available schematics. |
 | `<name>`      | The name of the generated component.                                                                     |
+ 
+### nest g co <name>
 
 ##### Schematics
 
